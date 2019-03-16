@@ -35,6 +35,14 @@ const routes: Routes = [
                 component: EditorialListComponent
             }
         ]
+    },
+    {
+         path: 'home',
+         component: BookListComponent
+    },
+    {
+         path: '**',    
+         redirectTo: 'home',    
     }
 ];
 

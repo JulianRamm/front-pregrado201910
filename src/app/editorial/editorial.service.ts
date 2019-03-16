@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable} from 'rxjs';
 
-import {Editorial} from './editorial';
+import { Editorial } from './editorial';
+import { HttpClient } from '@angular/common/http';
 
-const API_URL = "../../assets/";
-const editorials = '/editorials.json';
+import { environment } from '../../environments/environment';
+const API_URL = environment.apiURL;
+const editorials = '/editorials';
 
 /**
 * The service provider for everything related to editorials
@@ -17,7 +18,7 @@ export class EditorialService {
     * Constructor of the service
     * @param http The HttpClient - This is necessary in order to perform requests
     */
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     /**
     * Returns the Observable object containing the list of editorials retrieved from the API
@@ -27,4 +28,5 @@ export class EditorialService {
         return this.http.get<Editorial[]>(API_URL + editorials);
     }
 
+   
 }

@@ -10,6 +10,7 @@ import {AppModule} from '../app.module';
 describe('Service: AuthorService', () => {
     let injector: TestBed;
     let service: AuthorService;
+    const authors: Author[] = require('../../assets/authors.json');
     
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -25,6 +26,14 @@ describe('Service: AuthorService', () => {
     (done: DoneFn) => {
     service.getAuthors().subscribe(value => {
         expect(value.length).toBeGreaterThan(0);
+        done();
+        });
+    });
+    
+    it('#getAuthorDetail should return an existing author',
+    (done: DoneFn) => {
+    service.getAuthorDetail(authors[0].id).subscribe(value => {
+        expect(value.name).toEqual(authors[0].name);
         done();
         });
     });

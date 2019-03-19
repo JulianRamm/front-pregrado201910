@@ -1,34 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { Book } from '../book';
-import { BookService } from '../book.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
 
-/**
-* The component for the list of books in the BookStore
-*/
+
+import { Book } from '../../book/book';
+import { BookService } from '../../book/book.service';
 @Component({
-    selector: 'app-book',
+    selector: 'app-book-list',
     templateUrl: './book-list.component.html',
     styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
 
     /**
-    * Constructor of the component
-    * @param bookService The book's services provider
-    * @param toastrService The toastr to show messages to the user
+    * The list of books to display
     */
-    constructor(
-        private bookService: BookService
-        
-    ) { }
+    @Input() books: Book[];
 
     /**
-    * The list of books in the BookStore
+    * The component's constructor
     */
-    books: Book[];
-
+    constructor(private bookService: BookService,  private route: ActivatedRoute) {  }
+    
+    allbooks:string = 'no';
     /**
-    * Asks the service to update the list of books
+    * This method retrieves all the books in the Bookstore to show them in the list
     */
     getBooks(): void {
         this.bookService.getBooks()
@@ -38,14 +34,22 @@ export class BookListComponent implements OnInit {
     }
 
     /**
-    * This will initialize the component by retrieving the list of books from the service
-    * This method will be called when the component is created
+    * The method which initializes the component
     */
     ngOnInit() {
-        this.getBooks();
+     this.route.queryParams
+      .filter(params => params.allbooks)
+      .subscribe(params => {
+        console.log(params); 
+
+        this.allbooks = params.allbooks;
+        console.log(this.allbooks); 
+      });
+      if (this.allbooks == 'yes'){
+          console.log("allbooks");
+      
+       this.getBooks();
+       }
     }
+    
 }
-
-
-
-

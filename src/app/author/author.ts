@@ -2,7 +2,7 @@
  * This class represents an author of the BookStore. 
  * It contains all the information relevant to the author.
  */
-export interface Author {
+export class Author {
     /**
     * The author's id
     */
@@ -13,6 +13,10 @@ export interface Author {
      */
     name: string;
 
+    /** Fecha de nacimiento del autor. Estamos utilizando de tipo  string. 
+     * 
+     */
+    birthDate: any;
     /**
      * The location of the author's profile picture
      */
@@ -23,8 +27,4 @@ export interface Author {
      */
     description: string;
     
-     /**
-     * The author's birthDate 
-     */
-    birthDate: any;
 }

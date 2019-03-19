@@ -16,10 +16,10 @@ export class EditorialListComponent implements OnInit {
     /**
     * Constructor for the component
     * @param editorialService The author's services provider
-    * @param toastrService The toastr to show messages to the user
     */
     constructor(
-        private editorialService: EditorialService) { }
+        private editorialService: EditorialService,
+    ) { }
 
     /**
     * The list of editorials which belong to the BookStore

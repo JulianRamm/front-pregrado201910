@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { Editorial } from './editorial';
-import { HttpClient } from '@angular/common/http';
+import { EditorialDetail } from './editorial-detail';
 
 import { environment } from '../../environments/environment';
 const API_URL = environment.apiURL;
 const editorials = '/editorials';
+
 
 /**
 * The service provider for everything related to editorials
@@ -28,5 +30,11 @@ export class EditorialService {
         return this.http.get<Editorial[]>(API_URL + editorials);
     }
 
-   
+    /**
+    * Returns the Observable object containing the editorial retrieved from the API
+    * @returns The editorial
+    */
+    getEditorialDetail(editorialId): Observable<EditorialDetail> {
+        return this.http.get<EditorialDetail>(API_URL + editorials + '/' + editorialId);
+    }
 }

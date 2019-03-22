@@ -34,12 +34,5 @@ describe('AppComponent', () => {
         expect(app.title).toEqual(component.title);
     }));
 
-    it('should render titles in the navbar', async(() => {
-        fixture.detectChanges();
-        const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('#booksTag').textContent).toContain('Books');
-        expect(compiled.querySelector('#authorsTag').textContent).toContain('Authors');
-        expect(compiled.querySelector('#editorialTag').textContent).toContain('Editorials');
-    }));
 });
 

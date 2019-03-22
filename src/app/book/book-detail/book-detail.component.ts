@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { BookService } from '../book.service';
 import { Book } from '../book';
 import { BookDetail } from '../book-detail';
+import { Review } from '../review';
 import { Editorial } from '../../editorial/editorial';
 
 @Component({
@@ -84,7 +85,7 @@ export class BookDetailComponent implements OnInit, OnDestroy {
     * they are never considered undefined
     */
     ngOnInit() {
-        this.book_id = + this.route.snapshot.paramMap.get('id');
+        this.book_id = +this.route.snapshot.paramMap.get('id');
         this.bookDetail = new BookDetail();
         this.getBookDetail();
         this.getOtherBooks();

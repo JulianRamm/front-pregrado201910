@@ -8,20 +8,26 @@ import {EditorialListComponent} from '../editorial/editorial-list/editorial-list
 import { AuthorDetailComponent } from '../author/author-detail/author-detail.component';
 import { BookDetailComponent } from '../book/book-detail/book-detail.component';
 import { EditorialDetailComponent } from '../editorial/editorial-detail/editorial-detail.component';
+import { BookCreateComponent } from '../book/book-create/book-create.component';
 
 const routes: Routes = [
 
     {
         path: 'books',
         children: [
-            {
+           {
                 path: 'list',
-                component: BookListComponent
-                
+                component: BookListComponent 
+            },
+            {
+                path: 'add',
+                component: BookCreateComponent,
+                runGuardsAndResolvers: 'always'
             },
             {
                 path: ':id',
                 component: BookDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
@@ -30,11 +36,13 @@ const routes: Routes = [
         children: [
             {
                 path: 'list',
-                component: AuthorListComponent
+                component: AuthorListComponent,
+                runGuardsAndResolvers: 'always'
             },
             {
                 path: ':id',
-                component: AuthorDetailComponent
+                component: AuthorDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
@@ -43,11 +51,13 @@ const routes: Routes = [
         children: [
             {
                 path: 'list',
-                component: EditorialListComponent
+                component: EditorialListComponent,
+                runGuardsAndResolvers: 'always'
             },
             {
                 path: ':id',
-                component: EditorialDetailComponent
+                component: EditorialDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },

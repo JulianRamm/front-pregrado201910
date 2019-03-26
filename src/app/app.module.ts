@@ -10,6 +10,10 @@ import { BookModule } from './book/book.module';
 import { EditorialModule } from './editorial/editorial.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDialogModule } from 'ngx-modal-dialog';
 import {LayoutModule} from '@angular/cdk/layout';
 
 @NgModule({
@@ -19,7 +23,7 @@ import {LayoutModule} from '@angular/cdk/layout';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        LayoutModule,
+		LayoutModule,
         HttpClientModule,
         AuthorModule,
         BookModule,

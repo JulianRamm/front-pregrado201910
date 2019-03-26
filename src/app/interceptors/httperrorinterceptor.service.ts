@@ -28,11 +28,11 @@ export class HttpErrorInterceptor  extends HttpErrorResponse {
                     }
                     else {  // Server Side Error                       
                         if (error.status == 0) {
-                            errMsg = `${error.status}, "No hay conexión con el servidor"} `;      
+                            errMsg = `${error.status}, "No hay conexión con el servidor"} `;    
                             errorType = 'Major Error';
                         }                      
                         else {
-                            errMsg = `${error.status}: ${error.error}`;                          
+                            errMsg = `${error.status}: ${error.error}`;                  
                         }                      
                         this.toastrService.error(errMsg, errorType, {closeButton: true});
                     }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 import { Author } from './author';
@@ -37,6 +38,15 @@ export class AuthorService {
     */
     getAuthorDetail(authorId): Observable<AuthorDetail> {
         return this.http.get<AuthorDetail>(API_URL + authors + '/' + authorId);
+    }
+    
+    /**
+    * Creates an author
+    * @param author The new author
+    * @returns The confirmation that the author was created
+    */
+    createAuthor(author): Observable<Author> {
+        return this.http.post<Author>(API_URL + authors, author);
     }
     
 }

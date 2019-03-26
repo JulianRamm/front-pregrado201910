@@ -37,5 +37,13 @@ describe('Service: AuthorService', () => {
         done();
         });
     });
+	
+	it('#createAuthor should return the author created',
+    (done: DoneFn) => {
+    service.createAuthor(authors[0]).subscribe(value => {
+        expect(value.name).toEqual(authors[0].name);
+        done();
+        });
+    });
     
 });

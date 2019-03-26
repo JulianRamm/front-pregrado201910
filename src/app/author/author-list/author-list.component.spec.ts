@@ -41,7 +41,6 @@ describe('AuthorListComponent', () => {
 
     it('a author should be a author (first and last)', () => {
         component.authors = authors;
-        //revisar todos los libros
         expect(component.authors[0].name).toEqual(authors[0].name);
         expect(component.authors[authors.length - 1].name).toEqual(authors[authors.length - 1].name);
     });

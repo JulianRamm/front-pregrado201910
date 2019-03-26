@@ -10,7 +10,7 @@ import {AppModule} from '../app.module';
 describe('Service: EditorialService', () => {
     let injector: TestBed;
     let service: EditorialService;
-    
+	const editorials: Editorial[] = require('../../assets/editorials.json');
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientModule, AppModule],
@@ -25,6 +25,23 @@ describe('Service: EditorialService', () => {
     (done: DoneFn) => {
     service.getEditorials().subscribe(value => {
         expect(value.length).toBeGreaterThan(0);
+        done();
+        });
+    });
+	
+	it('#createEditorial should return value from observable',
+    (done: DoneFn) => {
+    let editorial:Editorial = {id:0,name:"prueba"};
+    service.createEditorial(editorial).subscribe(value => {
+        expect(value.name).toEqual(editorial.name);
+        done();
+        });
+    });
+	
+	it('#getEditorialDetail should return value from observable',
+    (done: DoneFn) => {
+    service.getEditorialDetail(editorials[0].id).subscribe(value => {
+        expect(value.name).toEqual(editorials[0].name);
         done();
         });
     });

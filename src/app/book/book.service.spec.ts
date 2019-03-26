@@ -32,7 +32,7 @@ describe('Service: BookService', () => {
         });
     });
     
-     it('#createBook should return value from observable',
+    it('#createBook should return value from observable',
     (done: DoneFn) => {
    let book:Book = {id:0,name:"Prueba",isbn:"987612345",publishingdate: "2017/01/06",image:"Prueba",description:"Prueba",editorial:{ id: 100, name: "Oveja Negra"}};
     service.createBook(book).subscribe(value => {

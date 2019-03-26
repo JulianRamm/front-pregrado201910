@@ -11,6 +11,7 @@ describe('Service: EditorialService', () => {
     let injector: TestBed;
     let service: EditorialService;
 	const editorials: Editorial[] = require('../../assets/editorials.json');
+    
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientModule, AppModule],
@@ -31,7 +32,7 @@ describe('Service: EditorialService', () => {
 	
 	it('#createEditorial should return value from observable',
     (done: DoneFn) => {
-    let editorial:Editorial = {id:0,name:"prueba"};
+    let editorial:Editorial = {id:100,name:"prueba"};
     service.createEditorial(editorial).subscribe(value => {
         expect(value.name).toEqual(editorial.name);
         done();
@@ -42,6 +43,15 @@ describe('Service: EditorialService', () => {
     (done: DoneFn) => {
     service.getEditorialDetail(editorials[0].id).subscribe(value => {
         expect(value.name).toEqual(editorials[0].name);
+        done();
+        });
+    });
+	
+	it('#updateEditorial should return the editorial updated',
+    (done: DoneFn) => {
+	let editorial:Editorial = {id:100,name:"prueba"};
+    service.updateEditorial(editorial).subscribe(value => {
+        expect(value.name).toEqual(editorial.name);
         done();
         });
     });

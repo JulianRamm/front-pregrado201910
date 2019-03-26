@@ -45,5 +45,14 @@ describe('Service: AuthorService', () => {
         done();
         });
     });
+	
+	it('#updateAuthor should return the author updated',
+    (done: DoneFn) => {
+	service.createAuthor(authors[0]).subscribe(value => {});
+    service.updateAuthor(authors[0]).subscribe(value => {
+        expect(value.name).toEqual(authors[0].name);
+        done();
+        });
+    });
     
 });

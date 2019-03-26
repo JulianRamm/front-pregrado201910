@@ -1,18 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {APP_BASE_HREF} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 
 import {ActivatedRoute, convertToParamMap} from '@angular/router';
 
 import {AppModule} from '../../app.module';
-import { BookAddReviewComponent } from './book-add-review.component';
+import { BookEditComponent } from './book-edit.component';
 import {AppRoutingModule} from '../../app-routing/app-routing.module';
 import {BookService} from '../book.service';
 import {Book} from '../book';
 
-describe('BookAddReviewComponent', () => {
-  let component: BookAddReviewComponent;
-    let fixture: ComponentFixture<BookAddReviewComponent>;
+describe('BookEditComponent', () => {
+  let component: BookEditComponent;
+    let fixture: ComponentFixture<BookEditComponent>;
     
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -37,9 +37,8 @@ describe('BookAddReviewComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(BookAddReviewComponent);
+        fixture = TestBed.createComponent(BookEditComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
-    
 });

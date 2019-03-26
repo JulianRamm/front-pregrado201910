@@ -23,8 +23,16 @@ describe('Service: BookService', () => {
         injector = getTestBed();
         service = injector.get(BookService);
     });
+	
+	it('#getBooks should return value from observable',
+    (done: DoneFn) => {
+    service.getBooks().subscribe(value => {
+        expect(value.length).toBeGreaterThan(0);
+        done();
+        });
+    });
     
-    it('#createBook should return value from observable',
+     it('#createBook should return value from observable',
     (done: DoneFn) => {
    let book:Book = {id:0,name:"Prueba",isbn:"987612345",publishingdate: "2017/01/06",image:"Prueba",description:"Prueba",editorial:{ id: 100, name: "Oveja Negra"}};
     service.createBook(book).subscribe(value => {
@@ -40,11 +48,19 @@ describe('Service: BookService', () => {
         done();
         });
     });
-	
 	it('#createReview should return value from observable',
     (done: DoneFn) => {
     service.createReview(books[0].id,reviews[0]).subscribe(value => {
         expect(value.name).toEqual(reviews[0].name);
+        done();
+        });
+    });
+	
+	it('#updateBook should return the book updated',
+    (done: DoneFn) => {
+	let book:Book = {id:100,name:"Prueba",isbn:"987612345",publishingdate: "2017/01/06",image:"Prueba",description:"Prueba",editorial:{ id: 100, name: "Oveja Negra"}};
+    service.updateBook(book).subscribe(value => {
+        expect(value.name).toEqual(book.name);
         done();
         });
     });
